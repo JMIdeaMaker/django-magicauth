@@ -6,7 +6,13 @@ from django.core.mail import send_mail
 from django.template import loader
 
 from magicauth import settings as magicauth_settings
+from django.conf import settings as django_settings
 from magicauth.models import MagicToken
+
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+sg = sendgrid.SendGridAPIClient(settings.SENDGRID_API_KEY)
 
 
 class SendTokenMixin(object):
@@ -48,14 +54,18 @@ class SendTokenMixin(object):
             context.update(extra_context)
         text_message = loader.render_to_string(text_template, context)
         html_message = loader.render_to_string(html_template, context)
-        send_mail(
+
+        mail = Mail(
+            from_email=(
+                django_settings.MAGICAUTH_FROM_EMAIL, 
+                django_settings.MAGICAUTH_SENDER
+            ),
+            to_emails=[user_email],
             subject=email_subject,
-            message=text_message,
-            from_email=from_email,
-            html_message=html_message,
-            recipient_list=[user_email],
-            fail_silently=False,
+            html_content=html_message
         )
+
+        sg.send(mail)
 
     def send_token(self, user_email, extra_context=None):
         user = self.get_user_from_email(user_email)
