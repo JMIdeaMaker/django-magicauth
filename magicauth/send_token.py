@@ -9,6 +9,7 @@ from magicauth import settings as magicauth_settings
 from django.conf import settings as django_settings
 from magicauth.models import MagicToken
 
+import sendgrid
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
