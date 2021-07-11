@@ -13,7 +13,7 @@ import sendgrid
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
-sg = sendgrid.SendGridAPIClient(settings.SENDGRID_API_KEY)
+sg = sendgrid.SendGridAPIClient(django_settings.SENDGRID_API_KEY)
 
 
 class SendTokenMixin(object):
