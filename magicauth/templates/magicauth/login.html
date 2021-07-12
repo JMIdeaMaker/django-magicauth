@@ -23,9 +23,9 @@
                     {% endif %}
 
                     <div class="form-group">
-                      <label class="text-uppercase form-label">Se connecter</label>
+                      <label class="text-uppercase form-label">To log in</label>
                       <input type="email" name="email" class="form-control {% if form.errors %}state-invalid {% endif %}"
-                             id="id_email" aria-describedby="emailHelp" placeholder="Votre email" required/>
+                             id="id_email" aria-describedby="emailHelp" placeholder="Your email" required/>
                       {% for error in form.email.errors %}
                         <div class="alet alert-danger text-center">{{ error }}</div>
                       {% endfor %}
@@ -37,7 +37,7 @@
                       </div>
                     {% endif %}
                     <div class="form-footer">
-                      <button type="submit" class="btn btn-primary btn-block">Valider</button>
+                      <button type="submit" class="btn btn-primary btn-block">Validate</button>
                     </div>
                 </div>
               </form>

@@ -300,8 +300,8 @@
                   <table border="0" cellpadding="6" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Bonjour {{ user.first_name }} {{ user.last_name }},</p>
-                        <p>Pour accéder à {{ site.domain }}, vous avez juste à cliquer sur ce bouton :</p>
+                        <p>Hello {{ user.first_name }} {{ user.last_name }},</p>
+                        <p>To have access to {{ site.domain }}, you just have to click on this button :</p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>
@@ -309,7 +309,7 @@
                                 <table border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td align="center"> <a href="https://{{ site.domain }}{% url 'magicauth-wait' token.key %}?next={{ next_url|urlencode }}">Connexion</a> </td>
+                                      <td align="center"> <a href="https://{{ site.domain }}{% url 'magicauth-wait' token.key %}?next={{ next_url|urlencode }}">Log in</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -317,20 +317,20 @@
                             </tr>
                           </tbody>
                         </table>
-                        <p>Ce lien n'est valable que {{ TOKEN_DURATION_MINUTES }} minutes. Il est à usage unique.</p>
+                        <p>This link is only valid for {{ TOKEN_DURATION_MINUTES }} minutes. It is for single use.</p>
                         <hr>
                         <div>
-                          <p>Des difficultés pour vous connecter ?</p>
+                          <p>Problem connecting ?</p>
                           <p>
-                            Nous vous recommandons de copier-coller ce lien dans un navigateur :
+                            We recommend that you copy and paste this link into a browser:
                           </p>
                           <p class="mb-6 align-center">
                             <strong>
-                              https://{{ site.domain }}{% url 'magicauth-wait' token.key %}?next={{ next_url|urlencode }}
+                              http://{{ site.domain }}{% url 'magicauth-wait' token.key %}?next={{ next_url|urlencode }}
                             </strong>
                           </p>
-                          <p>Bonne journée,</p>
-                          <p>L'équipe de {{ site.domain }}</p>
+                          <p>Have a good day,</p>
+                          <p>The team of {{ site.domain }}</p>
                         </div>
                       </td>
                     </tr>
